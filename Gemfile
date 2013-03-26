@@ -9,7 +9,7 @@ gem 'thin'
 gem 'quiet_assets'
 
 gem 'twitter_oauth'
-
+gem 'twitter'
 
 group :development, :test do
     gem 'sqlite3'
