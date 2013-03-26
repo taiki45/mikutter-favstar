@@ -5,7 +5,6 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'haml-rails'
 gem 'thin'
 gem 'quiet_assets'
 
@@ -17,6 +16,13 @@ end
 group :production do
     gem 'pg'
 end
+
+
+# Templating
+gem 'haml-rails'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
