@@ -1,6 +1,7 @@
 MikutterFavstar::Application.routes.draw do
   get "login" => "login#login"
   get "logout" => "login#logout"
+  get "callback" => "login#callback"
 
   get "home" => "home#home"
 

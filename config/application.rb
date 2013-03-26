@@ -61,5 +61,9 @@ module MikutterFavstar
 
     # Set timezone
     config.time_zone = 'Tokyo'
+
+    # Set consumers
+    config.consumer_key = ENV['MF_KEY']
+    config.consumer_secret = ENV['MF_SECRET']
   end
 end
