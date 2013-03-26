@@ -1,5 +1,5 @@
 MikutterFavstar::Application.routes.draw do
-  get "home/home"
+  get "home" => "home#home"
 
   root :to => "home#index"
 
