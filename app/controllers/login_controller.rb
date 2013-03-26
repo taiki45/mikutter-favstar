@@ -3,8 +3,10 @@ class LoginController < ApplicationController
     base_url = "#{request.scheme}://#{request.host_with_port}"
     client = TwitterOAuth::Client.new(consumers)
     request_token = client.authentication_request_token(oauth_callback: base_url + '/callback')
+
     session[:request_token] = request_token.token
     session[:request_token_secret] = request_token.secret
+
     redirect_to request_token.authorize_url
   end
 
@@ -16,8 +18,9 @@ class LoginController < ApplicationController
       :oauth_verifier => params[:oauth_verifier]
     )
 
-    uesr = User.find(:first, conditions: {twitter_id: client.info['id']})
-    user = User.craete_from(client) unless user
+    info = client.info
+    user = User.find(:first, conditions: {twitter_id: info['id']})
+    user = User.create_from(client, info) unless user
 
     session[:request_token] = nil
     session[:request_token_secret] = nil
