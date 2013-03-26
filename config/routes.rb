@@ -1,4 +1,8 @@
 MikutterFavstar::Application.routes.draw do
+  get "login/login"
+
+  get "login/logout"
+
   get "home" => "home#home"
 
   root :to => "home#index"
