@@ -8,6 +8,9 @@ gem 'rails', '3.2.13'
 gem 'thin'
 gem 'quiet_assets'
 
+gem 'twitter_oauth'
+
+
 group :development, :test do
     gem 'sqlite3'
     gem 'erb2haml'
