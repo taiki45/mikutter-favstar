@@ -1,4 +1,6 @@
 MikutterFavstar::Application.routes.draw do
+  get "home/home"
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:
