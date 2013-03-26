@@ -15,10 +15,13 @@ class LoginController < ApplicationController
       session[:request_token_secret],
       :oauth_verifier => params[:oauth_verifier]
     )
-    session[:token] = access_token.token
-    session[:secret] = access_token.secret
-    cookies.permanent[:token] = access_token.token
-    cookies.permanent[:secret] = access_token.secret
+
+    uesr = User.find(:first, conditions: {twitter_id: client.info['id']})
+    user = User.craete_from(client) unless user
+
+    session[:request_token] = nil
+    session[:request_token_secret] = nil
+    session[:id] = user.id
 
     redirect_to controller: :home, action: :home
   end
