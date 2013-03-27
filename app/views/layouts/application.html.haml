@@ -34,8 +34,8 @@
               - if login?
                 %li
                   = link_to '/user' do #TODO
-                    %img{src: user.profile_image_url, hight: '20px', width: '20px'}
                     = user.screen_name
+                    %img{src: user.profile_image_url, hight: '20px', width: '20px'}
                 %li= link_to "Logout", controller: :login, action: :logout
               - else
                 %li= link_to "Login", controller: :login, action: :login
@@ -55,7 +55,8 @@
           = yield
     
       %footer
-        %p &copy; Company 2013
+        = link_to "https://twitter.com/taiki45" do
+          %p.pull-right @taiki45
     /
       Javascripts
       \==================================================
