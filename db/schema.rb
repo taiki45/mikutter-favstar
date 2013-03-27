@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326202628) do
+ActiveRecord::Schema.define(:version => 20130327193101) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(:version => 20130326202628) do
     t.text     "profile_image_url"
     t.datetime "updated_at",        :null => false
     t.datetime "created_at",        :null => false
+    t.string   "send_key"
   end
+
+  add_index "users", ["screen_name"], :name => "index_users_on_screen_name", :unique => true
+  add_index "users", ["twitter_id"], :name => "index_users_on_twitter_id", :unique => true
 
 end
