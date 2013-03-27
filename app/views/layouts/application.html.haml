@@ -27,10 +27,13 @@
             %span.icon-bar
           %a.brand(href="#") MikutterFavstar
           .container.nav-collapse
+            - if params[:controller] == 'home'
+              %ul.nav.pull-left
+                %li= link_to "About", "/about" #TODO
             %ul.nav.pull-right
               - if login?
                 %li
-                  = link_to '/user' do
+                  = link_to '/user' do #TODO
                     %img{src: user.profile_image_url, hight: '20px', width: '20px'}
                     = user.screen_name
                 %li= link_to "Logout", controller: :login, action: :logout
