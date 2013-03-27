@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327193101) do
+ActiveRecord::Schema.define(:version => 20130327215702) do
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.integer  "twitter_id"
-    t.string   "screen_name"
-    t.string   "oauth_token"
-    t.string   "oauth_secret"
-    t.text     "profile_image_url"
+    t.string   "name",              :null => false
+    t.integer  "twitter_id",        :null => false
+    t.string   "screen_name",       :null => false
+    t.string   "oauth_token",       :null => false
+    t.string   "oauth_secret",      :null => false
+    t.text     "profile_image_url", :null => false
     t.datetime "updated_at",        :null => false
     t.datetime "created_at",        :null => false
     t.string   "send_key"
