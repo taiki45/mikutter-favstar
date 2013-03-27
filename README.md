@@ -13,5 +13,8 @@ Early part of development.
 * Teokure point system.
 * User can define secret key for management and sending his or her favs and RTs.
 
+## License
+see {file: LICENSE}
+
 ## Contributing
 Any comments and ideas are highly welcomed.
