@@ -14,7 +14,7 @@ Early part of development.
 * User can define secret key for management and sending his or her favs and RTs.
 
 ## License
-see {file: LICENSE}
+MIT License: see {file: LICENSE}
 
 ## Contributing
 Any comments and ideas are highly welcomed.
