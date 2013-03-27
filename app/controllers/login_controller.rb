@@ -19,7 +19,7 @@ class LoginController < ApplicationController
     )
 
     info = client.info
-    user = User.find(:first, conditions: {twitter_id: info['id']})
+    user = User.find_by_twitter_id(info['id'])
     user = User.create_from(client, info) unless user
 
     session[:request_token] = nil
