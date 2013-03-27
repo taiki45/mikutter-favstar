@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :oauth_secret, :oauth_token, :profile_image_url, :screen_name, :twitter_id, :updated_at
+  attr_accessible :name, :oauth_secret, :oauth_token
+  attr_accessible :profile_image_url, :screen_name, :twitter_id, :updated_at
 
   def self.create_from(client, info)
     create(
