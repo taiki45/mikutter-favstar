@@ -12,8 +12,8 @@ gem 'twitter_oauth'
 gem 'twitter'
 
 group :development, :test do
-    gem 'sqlite3'
-    gem 'erb2haml'
+  gem 'sqlite3'
+  gem 'erb2haml'
 end
 
 group :development do
@@ -21,7 +21,7 @@ group :development do
 end
 
 group :production do
-    gem 'pg'
+  gem 'pg'
 end
 
 
