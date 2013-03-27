@@ -1,4 +1,8 @@
 MikutterFavstar::Application.routes.draw do
+  get "user/most"
+
+  get "user/recent"
+
   get "login" => "login#login"
   get "logout" => "login#logout"
   get "callback" => "login#callback"
