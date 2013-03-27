@@ -1,5 +1,5 @@
 !!! 5
-%html(lang="en")
+%html(lang="ja")
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
@@ -27,10 +27,15 @@
             %span.icon-bar
           %a.brand(href="#") MikutterFavstar
           .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+            %ul.nav.pull-right
+              - if login?
+                %li
+                  = link_to '/user' do
+                    %img{src: user.profile_image_url, hight: '20px', width: '20px'}
+                    = user.screen_name
+                %li= link_to "Logout", controller: :login, action: :logout
+              - else
+                %li= link_to "Login", controller: :login, action: :login
 
     .container-fluid
 
