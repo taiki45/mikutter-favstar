@@ -1,9 +1,9 @@
 module ApplicationHelper
   def login?
-    session[:id]
+    session[:id] && current_user
   end
 
-  def user
-    User.find(session[:id])
+  def current_user
+    @current_user ||= User.find(session[:id])
   end
 end

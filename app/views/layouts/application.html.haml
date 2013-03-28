@@ -33,9 +33,9 @@
             %ul.nav.pull-right
               - if login?
                 %li
-                  = link_to user.screen_name do
-                    = user.screen_name
-                    %img{src: user.profile_image_url, hight: '20px', width: '20px'}
+                  = link_to current_user.screen_name do
+                    = current_user.screen_name
+                    %img{src: current_user.profile_image_url, hight: '20px', width: '20px'}
                 %li= link_to "Logout", controller: :login, action: :logout
               - else
                 %li= link_to "Login", controller: :login, action: :login
