@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :oauth_secret, :oauth_token
   attr_accessible :profile_image_url, :screen_name, :twitter_id, :updated_at
 
+  has_many :tweets
+
   def self.create_from(client, info)
     create(
       oauth_token: client.__send__(:access_token).token,
