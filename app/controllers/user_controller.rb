@@ -1,5 +1,6 @@
 class UserController < ApplicationController
-  before_filter :user
+
+  include UserHelper
 
   def most
   end
@@ -12,11 +13,5 @@ class UserController < ApplicationController
         format.json { render json: use.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  private
-
-  def user
-    @user ||= User.find_by_screen_name(params[:screen_name])
   end
 end
