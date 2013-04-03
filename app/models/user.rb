@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
       profile_image_url: info['profile_image_url']
     )
   end
+
+  def update_mosts(new_mosts)
+    tweets
+  end
 end
