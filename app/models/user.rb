@@ -16,9 +16,10 @@ class User < ActiveRecord::Base
   end
 
   def update_mosts(new_mosts)
-    self.tweets = JSON.parse(new_mosts).map(&:symbolize_keys).map do |most|
-      Tweet.create(tweet_id: most[:id], most_number: most[:number])
+    transaction do
+      self.tweets = JSON.parse(new_mosts).map(&:symbolize_keys).map do |most|
+        Tweet.new(tweet_id: most[:id], most_number: most[:number])
+      end
     end
-    save
   end
 end
