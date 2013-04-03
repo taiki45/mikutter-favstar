@@ -34,6 +34,11 @@ class LoginController < ApplicationController
     redirect_to controller: :home, action: :index
   end
 
+  def debug
+    session[:id] = 1
+    redirect_to controller: :home, action: :home
+  end
+
   private
 
   def consumers
