@@ -1,16 +1,17 @@
 require 'spec_helper'
 
 describe TwitterClient do
-  fixtures :users, :tweets
 
   let(:user) do
-    user = User.find(1)
+    user = double("user")
     user.extend described_class
   end
 
   context "when not initialized" do
     it "should create twitter client with oauth_tokens" do
-      expect(user.client).not_to be_nil
+      user.should_receive(:oauth_token)
+      user.should_receive(:oauth_secret)
+      user.client
     end
   end
 
