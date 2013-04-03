@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   name: tai
   twitter_id: 1
   screen_name: taiki45
@@ -10,6 +11,7 @@ one:
   updated_at: 2013-03-27 05:26:28
 
 two:
+  id: 2
   name: enkun
   twitter_id: 2
   screen_name: enkunkun
