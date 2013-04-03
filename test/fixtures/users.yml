@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: tai
   twitter_id: 1
-  screen_name: MyString
-  oauth_token: MyString
-  oauth_secret: MyString
-  profile_image_url: MyText
+  screen_name: taiki45
+  oauth_token: XXXX
+  oauth_secret: XXXX
+  profile_image_url: http://example.com
   updated_at: 2013-03-27 05:26:28
 
 two:
-  name: MyString
-  twitter_id: 1
-  screen_name: MyString
-  oauth_token: MyString
-  oauth_secret: MyString
-  profile_image_url: MyText
+  name: enkun
+  twitter_id: 2
+  screen_name: enkunkun
+  oauth_token: YYYY
+  oauth_secret: YYYY
+  profile_image_url: http://example.com
   updated_at: 2013-03-27 05:26:28
