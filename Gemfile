@@ -14,6 +14,7 @@ gem 'twitter'
 group :development, :test do
   gem 'sqlite3'
   gem 'erb2haml'
+  gem 'rspec-rails', "~> 2.0"
 end
 
 group :development do
