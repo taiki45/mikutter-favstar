@@ -22,9 +22,11 @@ describe Tweet do
     subject { User.find(1).tweets }
 
     it { should have(2).items }
-    it "is ordered by most number" do
-      expect(subject.first.most_number).to eq 1
-      expect(subject.second.most_number).to eq 2
+
+    describe "its order" do
+      its("first.most_number") { should eq 1 }
+      its("second.most_number") { should  eq 2 }
     end
   end
+
 end
