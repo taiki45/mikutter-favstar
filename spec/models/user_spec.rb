@@ -12,12 +12,20 @@ describe User do
     its(:tweets) { should_not be_nil }
     its(:tweets) { should have(2).tweet }
 
-    context "when update" do
+    context "when update with valid json" do
       let(:new_mosts) { (1..5).map { |n| {id: n, number: n} }.to_json }
 
       it "should update successfully" do
         expect(subject.update_mosts(new_mosts)).to be_true
       end
+    end
+
+    context "when updated with valid json" do
+      before do
+        subject.update_mosts((1..5).map { |n| {id: n, number: n} }.to_json)
+      end
+
+      its(:tweets) { should have(5).tweet }
     end
   end
 
