@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def update_mosts(new_mosts)
-    tweets = new_mosts.map do |most|
+    tweets = JSON.parse(new_mosts).map do |most|
       Tweet.new(tweet_id: most[:id], most_number: most[:number])
     end
     save

@@ -13,7 +13,7 @@ describe User do
     its(:tweets) { should have(2).tweet }
 
     context "when update" do
-      let(:new_mosts) { (1..5).map { |n| {id: n, number: n} } }
+      let(:new_mosts) { (1..5).map { |n| {id: n, number: n} }.to_json }
 
       it "should update successfully" do
         expect(subject.update_mosts(new_mosts)).to be_true
