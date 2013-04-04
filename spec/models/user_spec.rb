@@ -26,6 +26,15 @@ describe User do
       end
 
       its(:tweets) { should have(5).tweet }
+
+      it "should be orderd by its most number" do
+        subject.update_mosts(JSON.parse(new_mosts).shuffle.to_json)
+
+        subject.tweets(true).each_with_index do |tweet, index|
+          expect(tweet.tweet_id).to eq index + 1
+          expect(tweet.most_number).to eq index + 1
+        end
+      end
     end
   end
 
