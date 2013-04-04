@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   end
 
   def update_mosts(new_mosts)
-    tweets
+    tweets = new_mosts.map do |most|
+      Tweet.new(tweet_id: most[:id], most_number: most[:number])
+    end
+    save
   end
 end
