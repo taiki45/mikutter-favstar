@@ -10,6 +10,10 @@ describe User do
     its(:screen_name) { should eq 'taiki45' }
     its(:name) { should eq 'tai' }
     its(:tweets) { should_not be_nil }
+    its(:tweets) { should have(2).tweet }
+  end
+
+  context "when update" do
   end
 
 end
