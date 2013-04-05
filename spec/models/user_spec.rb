@@ -5,7 +5,7 @@ describe User do
 
   context "is taiki45" do
     subject { User.find(1) }
-    let(:new_mosts) { (1..5).map { |n| {id: n, number: n} }.to_json }
+    let(:new_mosts) { (1..10).map { |n| {id: n, number: n} }.to_json }
 
     its(:id) { should eq 1 }
     its(:screen_name) { should eq 'taiki45' }
@@ -25,7 +25,7 @@ describe User do
         subject.update_mosts(new_mosts)
       end
 
-      its(:tweets) { should have(5).tweet }
+      its(:tweets) { should have(10).tweet }
 
       it "should be orderd by its most number" do
         subject.update_mosts(JSON.parse(new_mosts).shuffle.to_json)
@@ -34,6 +34,16 @@ describe User do
           expect(tweet.tweet_id).to eq index + 1
           expect(tweet.most_number).to eq index + 1
         end
+      end
+    end
+
+    context "when update with invalid json" do
+      it "should raise Error with not 10 sized json array" do
+        invalid_mosts = JSON.parse(new_mosts)[0..5].to_json
+        expect { subject.update_mosts(invalid_mosts) }.to raise_error ActiveRecord::RecordInvalid
+      end
+
+      it "should raise Error with invalid json data" do
       end
     end
   end

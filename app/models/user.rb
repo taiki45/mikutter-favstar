@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
       self.tweets = JSON.parse(new_mosts).map(&:symbolize_keys).map do |most|
         Tweet.new(tweet_id: most[:id], most_number: most[:number])
       end
+      save!
     end
   end
 
