@@ -5,7 +5,7 @@ describe User do
 
   context "is taiki45" do
     subject { User.find(1) }
-    let(:new_mosts) { (1..10).map { |n| {id: n, number: n} } }
+    let(:new_mosts) { (1..10).map { |n| { 'id' => n, 'number' => n } } }
 
     its(:id) { should eq 1 }
     its(:screen_name) { should eq 'taiki45' }
