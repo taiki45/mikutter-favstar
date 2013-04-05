@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   attr_accessible :profile_image_url, :screen_name, :twitter_id, :updated_at
 
   has_many :tweets, dependent: :destroy, order: :most_number
+  validates_associated :tweets
+  validate :tweets_size
 
   def self.create_from(client, info)
     create(
@@ -21,5 +23,11 @@ class User < ActiveRecord::Base
         Tweet.new(tweet_id: most[:id], most_number: most[:number])
       end
     end
+  end
+
+  private
+
+  def tweets_size
+    errors.add(:tweets_size, "invalid tweets size") unless tweets.size == 10
   end
 end
