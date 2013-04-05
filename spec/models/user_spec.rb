@@ -53,6 +53,7 @@ describe User do
         expect(subject.errors).to have_key(:tweets_size)
         expect(subject.errors).to have(1).error
 
+        expect(subject.tweets).to have(6).tweets
         expect(subject.tweets(true)).to have(2).tweets
       end
 
