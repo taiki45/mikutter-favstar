@@ -42,12 +42,18 @@ describe User do
     context "when update with invalid json" do
       it "should raise Error with not 10 sized json array" do
         invalid_mosts = new_mosts[0..5].to_json
-        subject.update_mosts(invalid_mosts)
+        result = subject.update_mosts(invalid_mosts)
+
+        expect(result).to be_false
+        expect(result).to be_nil
+        expect(result).not_to be_true
 
         expect(subject).to be_invalid
         expect(subject.errors).not_to be_empty
         expect(subject.errors).to have_key(:tweets_size)
         expect(subject.errors).to have(1).error
+
+        expect(subject.tweets(true)).to have(2).tweets
       end
 
       it "should raise Error with invalid json data" do
