@@ -25,6 +25,8 @@ describe User do
         subject.update_mosts(new_mosts.to_json)
       end
 
+      it { should_not be_invalid }
+      its(:errors) { should be_empty }
       its(:tweets) { should have(10).tweet }
 
       it "should be orderd by its most number" do
@@ -40,7 +42,12 @@ describe User do
     context "when update with invalid json" do
       it "should raise Error with not 10 sized json array" do
         invalid_mosts = new_mosts[0..5].to_json
-        expect { subject.update_mosts(invalid_mosts) }.to raise_error ActiveRecord::RecordInvalid
+        subject.update_mosts(invalid_mosts)
+
+        expect(subject).to be_invalid
+        expect(subject.errors).not_to be_empty
+        expect(subject.errors).to have_key(:tweets_size)
+        expect(subject.errors).to have(1).error
       end
 
       it "should raise Error with invalid json data" do
