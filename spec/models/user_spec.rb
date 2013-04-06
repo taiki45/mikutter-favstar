@@ -1,7 +1,54 @@
 require 'spec_helper'
 
 describe User do
+
   fixtures :users, :tweets
+
+
+  context "when create new" do
+    let :valid do
+      {
+        twitter_id: 5,
+        screen_name: 'user5',
+        name: 'user 5',
+        profile_image_url: 'http://example.com/image.png',
+        oauth_token: 'XXXX',
+        oauth_secret: 'YYYY'
+      }
+    end
+
+    context "given valid data" do
+      subject { User.new(valid) }
+      it { should be_valid }
+    end
+
+    context "given invalid data" do
+
+      context "when create duplicatedlly" do
+        before { valid_user = User.create(valid) }
+
+        it "should raise ActiveRecord::RecordNotUnique on create" do
+          create_duplicated = -> { User.create(valid) }
+          expect(create_duplicated).to raise_error ActiveRecord::RecordNotUnique
+        end
+
+        it "should raise ActiveRecord::RecordNotUnique on create!" do
+          create_duplicated = -> { User.create!(valid) }
+          expect(create_duplicated).to raise_error ActiveRecord::RecordNotUnique
+        end
+
+        it "should be invalid" do
+          pending "should research User.new and User#invalid"
+          duplicated = valid
+          duplicated[:name] = 'duplicated_user'
+
+          expect(User.new(duplicated)).to be_invalid
+        end
+      end
+
+    end
+  end
+
 
   context "is taiki45" do
     subject { User.find(1) }
