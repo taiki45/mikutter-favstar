@@ -25,6 +25,7 @@ describe User do
         subject.update_mosts(new_mosts.to_json)
       end
 
+      it { should be_valid }
       it { should_not be_invalid }
       its(:errors) { should be_empty }
       its(:tweets) { should have(10).tweet }
@@ -46,15 +47,16 @@ describe User do
 
         expect(result).to be_false
         expect(result).to be_nil
-        expect(result).not_to be_true
 
         expect(subject).to be_invalid
+        expect(subject).not_to be_valid
         expect(subject.errors).not_to be_empty
         expect(subject.errors).to have_key(:tweets_size)
         expect(subject.errors).to have(1).error
 
         expect(subject.tweets).to have(6).tweets
         expect(subject.tweets(true)).to have(2).tweets
+        expect(subject).to be_invalid
       end
 
       it "should raise Error with invalid json data" do
