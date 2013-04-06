@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   attr_accessible :profile_image_url, :screen_name, :twitter_id, :updated_at
 
   has_many :tweets, dependent: :destroy, order: :most_number
+
+  validate :name, :profile_image_url, presence: true
+  validate :twitter_id, :screen_name, uniqueness: true, presence: true
+  validate :oauth_token, :oauth_secret, uniqueness: true, presence: true
   validates_associated :tweets
   validate :tweets_size
 
@@ -30,6 +34,6 @@ class User < ActiveRecord::Base
   private
 
   def tweets_size
-    errors.add(:tweets_size, "invalid tweets size") unless tweets.size == 10
+    errors.add(:tweets_size, "invalid tweets size") unless tweets.size == 10 || tweets.size == 0
   end
 end
