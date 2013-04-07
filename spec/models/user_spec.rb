@@ -107,6 +107,8 @@ describe User do
       end
 
       it "should raise Error with invalid json data" do
+        invalid_mosts = new_mosts.to_json[0..5]
+        expect { subject.update_mosts(invalid_mosts) }.to raise_error JSON::ParserError
       end
     end
   end
