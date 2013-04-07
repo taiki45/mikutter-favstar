@@ -50,7 +50,7 @@ describe User do
 
   context "when is taiki45" do
     subject { User.find(1) }
-    let(:new_mosts) { (1..10).map { |n| { 'id' => n, 'number' => n } } }
+    let(:new_mosts) { (51..60).zip(1..10).map { |n| { 'id' => n[0], 'number' => n[1] } } }
 
     context "when have no tweet" do
       subject { User.find(1) }
@@ -82,7 +82,7 @@ describe User do
         subject.update_mosts(new_mosts.shuffle.to_json)
 
         subject.tweets(true).each_with_index do |tweet, index|
-          expect(tweet.tweet_id).to eq index + 1
+          expect(tweet.tweet_id).to eq index + 51
           expect(tweet.most_number).to eq index + 1
         end
       end
@@ -96,11 +96,12 @@ describe User do
         expect(result).to be_false
 
         expect(subject.errors).to have_key(:tweets_size)
-        expect(subject.errors).to have(1).error
+        expect(subject.errors).to have_key(:tweets_setting)
+        expect(subject.errors).to have(2).error
 
-        expect(subject.tweets).to have(0).tweets
-        expect(subject.tweets(true)).to have(0).tweets
-        expect(subject).to be_invalid
+        expect(subject.tweets).to have(6).tweets
+        expect(subject.tweets(true)).to have(10).tweets
+        expect(subject).to be_valid
       end
 
       it "should raise Error with invalid json data" do
