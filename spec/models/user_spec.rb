@@ -4,7 +4,6 @@ describe User do
 
   fixtures :users, :tweets
 
-
   context "when create new" do
     let :valid do
       {
@@ -49,15 +48,18 @@ describe User do
   end
 
 
-  context "is taiki45" do
+  context "when is taiki45" do
     subject { User.find(1) }
     let(:new_mosts) { (1..10).map { |n| { 'id' => n, 'number' => n } } }
 
-    its(:id) { should eq 1 }
-    its(:screen_name) { should eq 'taiki45' }
-    its(:name) { should eq 'tai' }
-    its(:tweets) { should_not be_nil }
-    its(:tweets) { should have(2).tweet }
+    context "when have no tweet" do
+      subject { User.find(1) }
+
+      its(:id) { should eq 1 }
+      its(:screen_name) { should eq 'taiki45' }
+      its(:name) { should eq 'tai' }
+      its(:tweets) { should have(10).tweet }
+    end
 
     context "when update with valid json" do
 
@@ -92,16 +94,12 @@ describe User do
         result = subject.update_mosts(invalid_mosts)
 
         expect(result).to be_false
-        expect(result).to be_nil
 
-        expect(subject).to be_invalid
-        expect(subject).not_to be_valid
-        expect(subject.errors).not_to be_empty
         expect(subject.errors).to have_key(:tweets_size)
         expect(subject.errors).to have(1).error
 
-        expect(subject.tweets).to have(6).tweets
-        expect(subject.tweets(true)).to have(2).tweets
+        expect(subject.tweets).to have(0).tweets
+        expect(subject.tweets(true)).to have(0).tweets
         expect(subject).to be_invalid
       end
 

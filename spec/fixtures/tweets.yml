@@ -1,11 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  tweet_id: 1
-  most_number: 1
-  user_id: 1
+<% @numbers = %w(one two three four five six seven eight nine ten).zip(1..10) %>
 
-two:
-  tweet_id: 2
-  most_number: 2
+<% @numbers.each do |n| %>
+<%= n[0] %>:
+  tweet_id: <%= n[1] %>
+  most_number: <%= n[1] %>
   user_id: 1
+<% end %>

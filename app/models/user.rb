@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
       save!
     end
     rescue ActiveRecord::RecordInvalid => e
+      errors.add(:tweets_setting, "can't save tweets from json") && false
     rescue JSON::ParserError => e
       errors.add(:parse_error, "can't parse json: #{e}") && false
   end
