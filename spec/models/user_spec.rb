@@ -109,7 +109,10 @@ describe User do
       it "should raise Error with invalid json data" do
         invalid_mosts = new_mosts.to_json[0..5]
         result = subject.update_mosts(invalid_mosts)
+
         expect(result).to be_false
+        expect(subject.errors).to have(1).error
+        expect(subject.errors).to have_key :parse_error
       end
     end
   end
