@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
       save!
     end
     rescue ActiveRecord::RecordInvalid => e
+    rescue JSON::ParserError => e
+      errors.add(:parse_error, "invalid json: #{e}") && false
   end
 
   private
