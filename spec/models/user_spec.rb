@@ -12,8 +12,8 @@ describe User do
         screen_name: 'user5',
         name: 'user 5',
         profile_image_url: 'http://example.com/image.png',
-        oauth_token: 'XXXX',
-        oauth_secret: 'YYYY'
+        oauth_token: 'A',
+        oauth_secret: 'B'
       }
     end
 
@@ -27,22 +27,21 @@ describe User do
       context "when create duplicatedlly" do
         before { valid_user = User.create(valid) }
 
-        it "should raise ActiveRecord::RecordNotUnique on create" do
+        subject { duplicated_user = User.create(valid) }
+        it { should be_invalid }
+        its(:errors) { should have(4).error }
+        %w(twitter_id screen_name oauth_token oauth_secret).map(&:to_sym).each do |key|
+          its(:errors) { should have_key key }
+        end
+
+        it "should not raise on create" do
           create_duplicated = -> { User.create(valid) }
-          expect(create_duplicated).to raise_error ActiveRecord::RecordNotUnique
+          expect(create_duplicated).not_to raise_error
         end
 
-        it "should raise ActiveRecord::RecordNotUnique on create!" do
+        it "should raise ActiveRecord::RecordInvalid on create!" do
           create_duplicated = -> { User.create!(valid) }
-          expect(create_duplicated).to raise_error ActiveRecord::RecordNotUnique
-        end
-
-        it "should be invalid" do
-          pending "should research User.new and User#invalid"
-          duplicated = valid
-          duplicated[:name] = 'duplicated_user'
-
-          expect(User.new(duplicated)).to be_invalid
+          expect(create_duplicated).to raise_error ActiveRecord::RecordInvalid
         end
       end
 

@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
 
   has_many :tweets, dependent: :destroy, order: :most_number
 
-  validate :name, :profile_image_url, presence: true
-  validate :twitter_id, :screen_name, uniqueness: true, presence: true
-  validate :oauth_token, :oauth_secret, uniqueness: true, presence: true
+  validates :name, :profile_image_url, presence: true
+  validates :twitter_id, :screen_name, uniqueness: true, presence: true
+  validates :oauth_token, :oauth_secret, uniqueness: true, presence: true
   validates_associated :tweets
   validate :tweets_size
 
