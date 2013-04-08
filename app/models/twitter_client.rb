@@ -5,4 +5,12 @@ module TwitterClient
       oauth_token_secret: oauth_secret
     )
   end
+
+  def mothod_missing(name, *args)
+    client.respond_to?(name) ? client.__send__(name, *args) : super
+  end
+
+  def respond_to_missing(name, include_private)
+    client.respond_to?(name)
+  end
 end
