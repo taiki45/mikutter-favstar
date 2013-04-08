@@ -10,7 +10,7 @@ class UserController < ApplicationController
       if user.update_mosts(params[:most])
         format.json { head :no_content }
       else
-        format.json { render json: use.errors, status: :unprocessable_entity }
+        format.json { render json: user.errors, status: :unprocessable_entity }
       end
     end
   end
