@@ -2,16 +2,24 @@ require 'spec_helper'
 
 describe TwitterClient do
 
-  let(:user) do
-    user = double("user")
-    user.extend described_class
+  subject { double("user").extend described_class }
+
+  describe "#client" do
+    it "should create twitter client with oauth_tokens" do
+      subject.should_receive(:oauth_token)
+      subject.should_receive(:oauth_secret)
+      subject.client
+    end
   end
 
-  context "when not initialized" do
-    it "should create twitter client with oauth_tokens" do
-      user.should_receive(:oauth_token)
-      user.should_receive(:oauth_secret)
-      user.client
+  describe "#method_missing" do
+    before { subject.instance_variable_set(:@client, double("client")) }
+
+    subject { Object.new.extend described_class }
+
+    it "should call client method when mwthod missed" do
+      subject.client.should_receive(:xxx).and_return("xxx")
+      subject.xxx
     end
   end
 
