@@ -15,6 +15,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'erb2haml'
   gem 'rspec-rails', "~> 2.0"
+  gem 'spork-rails', "~> 3.2"
   gem 'pry-rails'
 end
 
