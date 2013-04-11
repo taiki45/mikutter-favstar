@@ -53,8 +53,6 @@ describe User do
     let(:new_mosts) { (51..60).zip(1..10).map { |n| { 'id' => n[0], 'number' => n[1] } } }
 
     context "when have no tweet" do
-      subject { User.find(1) }
-
       its(:id) { should eq 1 }
       its(:screen_name) { should eq 'taiki45' }
       its(:name) { should eq 'tai' }
