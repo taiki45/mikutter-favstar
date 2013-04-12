@@ -17,7 +17,7 @@ describe TwitterClient do
 
     subject { Object.new.extend described_class }
 
-    it "should call client method when mwthod missed" do
+    it "should call client method when method missed" do
       subject.client.should_receive(:xxx).and_return("xxx")
       subject.xxx
     end
