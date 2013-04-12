@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:id])
+  rescue ActiveRecord::RecordNotFound
+    reset_session
   end
 
   def require_login
