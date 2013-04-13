@@ -27,9 +27,9 @@
             %span.icon-bar
           %a.brand(href="#") MikutterFavstar
           .container.nav-collapse
-            - if params[:controller] == 'home'
-              %ul.nav.pull-left
-                %li= link_to "About", "/about" #TODO
+            %ul.nav.pull-left
+              %li= link_to "About", "/about"
+
             %ul.nav.pull-right
               - if login?
                 %li
@@ -43,13 +43,6 @@
     .container-fluid
 
       .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
         .span9
           = bootstrap_flash
           = yield
