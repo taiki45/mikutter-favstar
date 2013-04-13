@@ -43,6 +43,16 @@
     .container-fluid
 
       .row-fluid
+        .span3
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header
+                - if params[:controller] == 'user'
+                  %img{src: user.profile_image_url}
+                - else
+                  Nav
+              %li= link_to "Most", controller: :user, action: :most
+
         .span9
           = bootstrap_flash
           = yield
