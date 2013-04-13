@@ -1,2 +1,4 @@
 %h1= "#{user.screen_name}'s most tweets"
-%p= user.tweets
+.tweet-list
+  - user.tweets.each do |tweet|
+    %p= "#{tweet.tweet_id}, #{tweet.most_number}"
