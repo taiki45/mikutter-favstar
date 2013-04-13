@@ -9,7 +9,7 @@ MikutterFavstar::Application.routes.draw do
 
   match ":screen_name", via: :get, to: "user#most"
   match ":screen_name/recent", to: "user#recent"
-  match ":screen_name", via: :put, to: "user#refresh_most"
+  match ":screen_name", via: :put, to: "user#refresh_mosts"
 
   root :to => "home#index"
 
