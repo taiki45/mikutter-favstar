@@ -11,7 +11,7 @@ class Tweet < ActiveRecord::Base
   def self.create?(attr = {})
     raise ArgumentError unless attr[:tweet_id] || attr[:most_number]
     if res = find_by_tweet_id(attr[:tweet_id])
-      res.most_number unless res.most_number == attr[:most_number]
+      res.most_number = attr[:most_number] unless res.most_number == attr[:most_number]
       res.save!
       res
     else
