@@ -35,7 +35,7 @@
                 %li
                   = link_to current_user.screen_name do
                     = current_user.screen_name
-                    %img{src: current_user.profile_image_url, hight: '20px', width: '20px'}
+                    %img.top-avatar{src: current_user.profile_image_url, hight: '20px', width: '20px'}
                 %li= link_to "Logout", controller: :login, action: :logout
               - else
                 %li= link_to "Login", controller: :login, action: :login
@@ -43,16 +43,6 @@
     .container-fluid
 
       .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header
-                - if params[:controller] == 'user'
-                  %img{src: user.profile_image_url}
-                - else
-                  Nav
-              %li= link_to "Most", controller: :user, action: :most
-
         .span9
           = bootstrap_flash
           = yield

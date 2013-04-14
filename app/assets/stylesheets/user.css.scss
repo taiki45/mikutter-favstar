@@ -2,8 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-li {
+img {
   .author-avatar {
     border-radius: 5px;
+  }
+}
+
+div {
+  .author-div {
+    float: left;
+  }
+
+  .tweet-content {
   }
 }

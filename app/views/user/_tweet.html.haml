@@ -1,1 +1,5 @@
-%p= simple_format tweet.text
+%li
+  .author-avatar
+    %img.author-avatar{alt: user.screen_name, height: '48px', width: '48px', src: user.profile_image_url}
+  .tweet-content
+    %p= simple_format tweet.text
