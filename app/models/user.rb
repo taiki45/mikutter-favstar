@@ -36,6 +36,15 @@ class User < ActiveRecord::Base
     errors.add(:parse_error, "can't parse json: #{e}") && false
   end
 
+  def full_tweets
+    return @full_tweets if @full_tweets
+
+    extend TwitterClient
+    @full_tweets = Parallel.map(tweets, in_process: 10) do |t|
+      status(t.tweet_id)
+    end
+  end
+
   private
 
   def tweets_size
