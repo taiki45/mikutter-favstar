@@ -26,7 +26,7 @@ class LoginController < ApplicationController
     session[:request_token_secret] = nil
     session[:id] = user.id
 
-    redirect_to controller: :home, action: :home
+    redirect_to controller: :user, action: :most, screen_name: user.screen_name
   end
 
   def logout
