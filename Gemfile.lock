@@ -58,6 +58,11 @@ GEM
       railties (>= 3.1, < 4.1)
     hike (1.2.1)
     hpricot (0.8.6)
+    html2haml (1.0.1)
+      erubis (~> 2.7.0)
+      haml (>= 4.0.0.rc.1)
+      hpricot (~> 0.8.6)
+      ruby_parser (~> 3.1.1)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -185,6 +190,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   erb2haml
   haml-rails
+  html2haml
   jquery-rails
   less-rails
   parallel
