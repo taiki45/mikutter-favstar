@@ -1,5 +1,6 @@
 class UserController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token, :only => :refresh_mosts
   helper_method :user
 
   def most
